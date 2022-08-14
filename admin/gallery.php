@@ -7,7 +7,13 @@ if (!isset($_SESSION['user'])) {
 }
 
 // Ambil semua data gallery dari database
-$galleries = getGalleries();
+$galleries = [];
+$sql = "SELECT * FROM galleries";
+$result = $conn->query($sql);
+
+while ($data = $result->fetch_assoc()) {
+    $galleries[] = $data;
+}
 ?>
 
 <!DOCTYPE html>
@@ -121,51 +127,55 @@ $galleries = getGalleries();
                                 </div>
                                 <div class="card-body" style="overflow-y: scroll;">
                                     <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <center>#</center>
-                                                </th>
-                                                <th>
-                                                    <center>Judul</center>
-                                                </th>
-                                                <th>
-                                                    <center>Gambar</center>
-                                                </th>
-                                                <th>
-                                                    <center>Aksi</center>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($galleries as $i => $gallery) { ?>
+                                        <?php if (count($galleries) > 0) { ?>
+                                            <thead>
                                                 <tr>
-                                                    <td class="pt-2">
-                                                        <center><?= $i + 1 ?></center>
-                                                    </td>
-                                                    <td class="pt-2">
-                                                        <center><?= $gallery['title'] ?></center>
-                                                    </td>
-                                                    <td>
-                                                        <center>
-                                                            <img src="img/galleries/<?= $gallery['image_name'] ?>" alt="<?= $gallery['title'] ?>" style="max-height: 120px;">
-                                                        </center>
-                                                    </td>
-                                                    <td class="pt-2">
-                                                        <center>
-                                                            <!-- Tombol ubah -->
-                                                            <a href="#" title="Ubah" class="d-inline-block mx-1">
-                                                                <i class="fa-solid fa-pencil text-dark"></i>
-                                                            </a>
-                                                            <!-- Tombol hapus -->
-                                                            <a href="#" title="Hapus" class="d-inline-block mx-1">
-                                                                <i class="fa-solid fa-trash text-danger"></i>
-                                                            </a>
-                                                        </center>
-                                                    </td>
+                                                    <th>
+                                                        <center>#</center>
+                                                    </th>
+                                                    <th>
+                                                        <center>Judul</center>
+                                                    </th>
+                                                    <th>
+                                                        <center>Gambar</center>
+                                                    </th>
+                                                    <th>
+                                                        <center>Aksi</center>
+                                                    </th>
                                                 </tr>
-                                            <?php } ?>
-                                        </tbody>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($galleries as $i => $gallery) { ?>
+                                                    <tr>
+                                                        <td class="pt-2">
+                                                            <center><?= $i + 1 ?></center>
+                                                        </td>
+                                                        <td class="pt-2">
+                                                            <center><?= $gallery['title'] ?></center>
+                                                        </td>
+                                                        <td>
+                                                            <center>
+                                                                <img src="img/galleries/<?= $gallery['image_name'] ?>" alt="<?= $gallery['title'] ?>" style="max-height: 120px;">
+                                                            </center>
+                                                        </td>
+                                                        <td class="pt-2">
+                                                            <center>
+                                                                <!-- Tombol ubah -->
+                                                                <a href="#" title="Ubah" class="d-inline-block mx-1">
+                                                                    <i class="fa-solid fa-pencil text-dark"></i>
+                                                                </a>
+                                                                <!-- Tombol hapus -->
+                                                                <a href="functions/delete-gallery.php?id=<?= $gallery['id'] ?>&image_name=<?= $gallery['image_name'] ?>" title="Hapus" class="d-inline-block mx-1">
+                                                                    <i class="fa-solid fa-trash text-danger"></i>
+                                                                </a>
+                                                            </center>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        <?php } else { ?>
+                                            <h6 class="mt-2">Data gallery tidak tersedia</h6>
+                                        <?php } ?>
                                     </table>
                                 </div>
                             </div>
