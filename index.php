@@ -1,3 +1,8 @@
+<?php
+include_once './admin/functions/global.php';
+$galleries = getGalleries();
+?>
+
 <!doctype html>
 <html lang="zxx">
 
@@ -41,9 +46,7 @@
                 </a>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -68,7 +71,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#lokasi" class="nav-link">
+                        <a href="#galeri" class="nav-link">
                             Galeri
                         </a>
                     </li>
@@ -104,8 +107,7 @@
                         <h1>Pura Griya Sakti Manuaba</h1>
                         <p>Aplikasi Virtual Tour 360<sup>o</sup></p>
 
-                        <a target="_blank" href="virtual-tour/index.htm" type="submit"
-                            class="btn btn-primary py-3 px-5 mt-5">
+                        <a target="_blank" href="virtual-tour/index.htm" type="submit" class="btn btn-primary py-3 px-5 mt-5">
                             Mulai Virtual Tour
                         </a>
                     </div>
@@ -248,10 +250,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d986.6341808990163!2d115.2898728!3d-8.44707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd222a85a8df8a3%3A0xd460e0c65b1bdcf0!2sPura%20Griya%20Sakti%20Manuaba!5e0!3m2!1sid!2sid!4v1662939971191!5m2!1sid!2sid"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d986.6341808990163!2d115.2898728!3d-8.44707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd222a85a8df8a3%3A0xd460e0c65b1bdcf0!2sPura%20Griya%20Sakti%20Manuaba!5e0!3m2!1sid!2sid!4v1662939971191!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -289,77 +288,14 @@
             </div>
 
             <div class="screenshot-slider owl-carousel owl-theme">
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/1.png" alt="image">
+                <?php foreach ($galleries as $gallery) { ?>
+                    <div class="screenshot-item">
+                        <div class="image">
+                            <img src="admin/img/galleries/<?= $gallery['image_name'] ?>" alt="image">
+                        </div>
+                        <h5 class="mt-3 text-light"><?= $gallery['title'] ?></h5>
                     </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/2.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/3.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/4.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/5.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/6.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/1.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/2.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/3.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/4.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/5.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/6.png" alt="image">
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </section>
@@ -481,25 +417,21 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="name" id="name" class="form-control" required
-                                            data-error="Please enter your name" placeholder="Nama lengkap ...">
+                                        <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Nama lengkap ...">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="email" name="email" id="email" class="form-control" required
-                                            data-error="Please enter your email" placeholder="Alamat email ...">
+                                        <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="Alamat email ...">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="6"
-                                            required data-error="Write your message"
-                                            placeholder="Masukan Komentar anda terkait lokasi ini ..."></textarea>
+                                        <textarea name="message" class="form-control" id="message" cols="30" rows="6" required data-error="Write your message" placeholder="Masukan Komentar anda terkait lokasi ini ..."></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -531,8 +463,7 @@
 
                             <ul class="social">
                                 <li>
-                                    <a href="https://www.instagram.com/explore/tags/puragriyasaktimanuaba/?hl=id"
-                                        target="_blank">
+                                    <a href="https://www.instagram.com/explore/tags/puragriyasaktimanuaba/?hl=id" target="_blank">
                                         <i class="fab fa-instagram"></i>
                                     </a>
                                 </li>

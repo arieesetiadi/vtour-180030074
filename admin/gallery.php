@@ -102,7 +102,7 @@ while ($data = $result->fetch_assoc()) {
                                     <span class="gallery-form-title">Form tambah gallery</span>
                                 </div>
                                 <div class="card-body">
-                                    <form action="functions/insert_gallery.php" method="POST" enctype="multipart/form-data">
+                                    <form action="functions/insert-gallery.php" method="POST" enctype="multipart/form-data">
                                         <!-- Input Judul Gambar -->
                                         <div class="mb-3">
                                             <label for="title" class="form-label">Judul Gambar</label>
