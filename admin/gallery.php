@@ -1,19 +1,19 @@
 <?php
 include_once 'functions/global.php';
 
+$isUbah = isset($_GET['ubah_id']);
+
+if ($isUbah) {
+    $galleryById = getGalleryById($_GET['ubah_id']);
+}
+
 // Redirect ke halaman login jika belum login
 if (!isset($_SESSION['user'])) {
     redirectTo('/admin/login.php');
 }
 
 // Ambil semua data gallery dari database
-$galleries = [];
-$sql = "SELECT * FROM galleries";
-$result = $conn->query($sql);
-
-while ($data = $result->fetch_assoc()) {
-    $galleries[] = $data;
-}
+$galleries = getGalleries();
 ?>
 
 <!DOCTYPE html>
@@ -99,23 +99,35 @@ while ($data = $result->fetch_assoc()) {
                         <div class="col-12 col-lg-5">
                             <div class="card" style="height: 65vh;">
                                 <div class="card-header">
-                                    <span class="gallery-form-title">Form tambah gallery</span>
+                                    <span class="gallery-form-title">Form <?= $isUbah ? 'ubah' : 'tambah' ?> gallery</span>
                                 </div>
                                 <div class="card-body">
-                                    <form action="functions/insert-gallery.php" method="POST" enctype="multipart/form-data">
+                                    <form action="functions/<?= $isUbah ? 'update-gallery.php' : 'insert-gallery.php' ?>" method="POST" enctype="multipart/form-data">
+                                        <?php if ($isUbah) { ?>
+                                            <input type="hidden" name="id" value="<?= $galleryById['id'] ?>">
+                                            <input type="hidden" name="old_image_name" value="<?= $galleryById['image_name'] ?>">
+                                        <?php } ?>
+
                                         <!-- Input Judul Gambar -->
                                         <div class="mb-3">
                                             <label for="title" class="form-label">Judul Gambar</label>
-                                            <input name="title" type="text" class="form-control" id="title" placeholder="Judul gambar" required>
+                                            <input name="title" type="text" class="form-control" id="title" placeholder="Judul gambar" required value="<?= $isUbah ? $galleryById['title'] : '' ?>">
                                         </div>
 
                                         <!-- Upload Gambar -->
                                         <div class="mb-3">
                                             <span class="d-block mb-2">Pilih Gambar</span>
-                                            <input name="image" type="file" class="d-block form-control" required>
+                                            <input name="image" type="file" class="d-block form-control" <?= $isUbah ? '' : 'required' ?>>
+                                            <?php if ($isUbah) { ?>
+                                                <small id="image-name">Gambar terdahulu :
+                                                    <a target="_blank" href="img/galleries/<?= $galleryById['image_name'] ?>">
+                                                        <?= $galleryById['image_name'] ?>
+                                                    </a>
+                                                </small>
+                                            <?php } ?>
                                         </div>
 
-                                        <button name="insert_gallery" type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                                        <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -161,7 +173,7 @@ while ($data = $result->fetch_assoc()) {
                                                         <td class="pt-2">
                                                             <center>
                                                                 <!-- Tombol ubah -->
-                                                                <a href="#" title="Ubah" class="d-inline-block mx-1">
+                                                                <a href="?ubah_id=<?= $gallery['id'] ?>" title="Ubah" class="d-inline-block mx-1">
                                                                     <i class="fa-solid fa-pencil text-dark"></i>
                                                                 </a>
                                                                 <!-- Tombol hapus -->
@@ -197,7 +209,12 @@ while ($data = $result->fetch_assoc()) {
     <script src="js/scripts.js"></script>
 
     <script>
-        console.log('Gallery');
+        const imageInput = document.querySelector('input[name=image]');
+        const imageName = document.getElementById('image-name');
+
+        imageInput.addEventListener('change', function() {
+            imageName.remove();
+        })
     </script>
 </body>
 

@@ -28,5 +28,16 @@ function getGalleries()
         $galleries[] = $galeri;
     }
 
-    return $galleries;
+    return array_reverse($galleries);
+}
+
+// Ambil gallery berdasarkan ID
+function getGalleryById($id)
+{
+    global $conn;
+
+    $sql = "SELECT * FROM galleries WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+
+    return mysqli_fetch_assoc($result);
 }

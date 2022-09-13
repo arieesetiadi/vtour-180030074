@@ -31,7 +31,12 @@ if (isset($_SESSION['user'])) {
                             <!-- Form Login -->
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4">Login</h3>
+                                    <center>
+                                        <a href="/" class="d-block my-3">
+                                            <img width="150px" src="../assets/img/logo/logo.png" alt="Main Logo">
+                                        </a>
+                                    </center>
+                                    <h3 class="text-center font-weight-light mb-4">Login</h3>
                                 </div>
                                 <div class="card-body py-4">
                                     <!-- Tampilkan pesan error jika login gagal -->

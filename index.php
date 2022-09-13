@@ -1,5 +1,10 @@
 <?php
 include_once './admin/functions/global.php';
+
+if ($_SERVER['REQUEST_URI'] == '/login') {
+    header('Location: admin/login.php');
+}
+
 $galleries = getGalleries();
 ?>
 
@@ -29,6 +34,8 @@ $galleries = getGalleries();
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Animation on Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <title>Pura Griya Sakti Manuaba</title>
 
@@ -41,7 +48,6 @@ $galleries = getGalleries();
         <div class="container-fluid">
             <div class="logo">
                 <a href="">
-                    <!-- <h3>Logo</h3> -->
                     <img src="assets/img/logo/logo.png" alt="Main Logo" width="100px">
                 </a>
             </div>
@@ -53,7 +59,7 @@ $galleries = getGalleries();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#branda" class="nav-link">
+                        <a href="#beranda" class="nav-link">
                             Beranda
                         </a>
                     </li>
@@ -75,19 +81,13 @@ $galleries = getGalleries();
                             Galeri
                         </a>
                     </li>
-
-                    <li class="nav-item">
-                        <a href="#tentang" class="nav-link">
-                            Tentang
-                        </a>
-                    </li>
                 </ul>
 
                 <div class="others-option">
                     <div class="d-flex align-items-center">
                         <div class="option-item">
-                            <a href="#" class="default-btn">
-                                Kontak
+                            <a href="#tentang" class="default-btn">
+                                Tentang
                                 <span></span>
                             </a>
                         </div>
@@ -99,7 +99,7 @@ $galleries = getGalleries();
     <!-- End Navbar Area -->
 
     <!-- Start Main Banner Area -->
-    <div id="home" class="main-banner-two">
+    <div id="beranda" class="main-banner-two">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
@@ -122,13 +122,13 @@ $galleries = getGalleries();
     <!-- Start Sejarah -->
     <section id="sejarah" class="about-area ptb-100">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title" data-aos="fade-up">
                 <h2>Sejarah</h2>
                 <div class="bar"></div>
             </div>
 
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6" data-aos="fade-right">
                     <div class="about-content">
                         <p style="text-align: justify;">Menurut keyakinan krama Pura Griya sakti Manuaba diceritakan Ida
                             Betara
@@ -157,19 +157,19 @@ $galleries = getGalleries();
                     </div>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="about-image px-3">
-                        <img src="assets/img/homepage-banner.png" alt="image" class="rounded shadow img-thumbnail">
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-image px-3 d-flex justify-content-center">
+                        <img width="90%" src="assets/img/sejarah/sejarah-1.png" alt="image" class="rounded shadow">
                     </div>
                 </div>
             </div>
             <div class="row align-items-center mt-4">
-                <div class="col-lg-6">
-                    <div class="about-image px-3">
-                        <img src="assets/img/homepage-banner.png" alt="image" class="rounded shadow img-thumbnail">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-image px-3 d-flex justify-content-center">
+                        <img width="90%" src="assets/img/sejarah/sejarah-2.png" alt="image" class="rounded shadow">
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" data-aos="fade-left">
                     <div class="about-content">
                         <p style="text-align: justify;">Menurut keyakinan krama Pura Griya sakti Manuaba diceritakan Ida
                             Betara
@@ -200,7 +200,7 @@ $galleries = getGalleries();
             </div>
 
             <!-- Start Video Area -->
-            <div class="video-area pt-100">
+            <div class="video-area pt-100" data-aos="fade-up">
                 <div class="container">
                     <div class="video-content">
                         <h3>Pengenalan Pura Griya Sakti Manuaba</h3>
@@ -239,7 +239,7 @@ $galleries = getGalleries();
     <!-- End Sejarah -->
 
     <!-- Start Lokasi -->
-    <section id="lokasi" class="features-area pb-70">
+    <section id="lokasi" class="features-area pt-5 pb-70" data-aos="fade-up">
         <div class="container">
             <div class="section-title">
                 <h2>Lokasi</h2>
@@ -280,7 +280,7 @@ $galleries = getGalleries();
     <!-- End Lokasi -->
 
     <!-- End Galeri -->
-    <section id="galeri" class="screenshot-area ptb-100">
+    <section id="galeri" class="screenshot-area ptb-100" data-aos="fade-up">
         <div class="container-fluid">
             <div class="section-title">
                 <h2>Galeri</h2>
@@ -291,9 +291,9 @@ $galleries = getGalleries();
                 <?php foreach ($galleries as $gallery) { ?>
                     <div class="screenshot-item">
                         <div class="image">
-                            <img src="admin/img/galleries/<?= $gallery['image_name'] ?>" alt="image">
+                            <img src="admin/img/galleries/<?= $gallery['image_name'] ?>" alt="image" class="rounded shadow">
                         </div>
-                        <h5 class="mt-3 text-light"><?= $gallery['title'] ?></h5>
+                        <h6 class="mt-3 text-light text-center"><?= $gallery['title'] ?></h6>
                     </div>
                 <?php } ?>
             </div>
@@ -302,7 +302,7 @@ $galleries = getGalleries();
     <!-- End Galeri -->
 
     <!-- Start Tentang -->
-    <section id="tentang" class="team-area pt-100 pb-70">
+    <section id="tentang" class="team-area pt-100 pb-70" data-aos="fade-up">
         <div class="container px-5">
             <div class="section-title">
                 <h2>Tentang</h2>
@@ -403,7 +403,7 @@ $galleries = getGalleries();
     <!-- End Tentang -->
 
     <!-- Start Kontak -->
-    <section id="kontak" class="contact-area ptb-100">
+    <!-- <section id="kontak" class="contact-area ptb-100">
         <div class="container">
             <div class="section-title">
                 <h2>Kontak</h2>
@@ -495,7 +495,7 @@ $galleries = getGalleries();
                 <img src="assets/img/shape/5.png" alt="image">
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Kontak -->
 
     <!-- Start Komentar -->
@@ -686,10 +686,10 @@ $galleries = getGalleries();
     <!-- End Komentar -->
 
     <!-- Start Footer -->
-    <div class="copy-right">
+    <div class="copy-right bg-dark">
         <div class="container">
             <div class="copy-right-content">
-                <p>
+                <p class="text-light">
                     Copyright © 2022. All Rights Reserved by Pura Griya Sakti Manuaba
                 </p>
             </div>
@@ -736,6 +736,11 @@ $galleries = getGalleries();
     <script src="assets/js/main.js"></script>
     <!-- Custom JS -->
     <script src="assets/js/custom.js"></script>
+    <!-- Animation on Scroll JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
