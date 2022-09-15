@@ -119,6 +119,82 @@ $galleries = getGalleries();
     </div>
     <!-- End Main Banner Area -->
 
+    <!-- Start Aturan Pengunjung -->
+    <section class="about-area pt-100">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title text-start">
+                <h4>Aturan Pengunjung</h4>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="about-content">
+                        <p style="text-align: justify;">
+                            Dilarang memasuki wilayah Pura Pegulingan bagi wanita yang sedang datang bulan, dan pengunjung kika sedang tidak suci (sebelan) hal ini bertujuan untuk menjaga kesucian dari Pura Griya Sakti Manuaba.
+                            Dilarang membuang sampan sembarangan, diharapkan bagi pengunjung membuang sampan pada tempat sampah yang telah disediakan, uituk menjaga kebersihan pura.
+                            Dilarang melakukan tindakan asusila di area Pura Griya Sakti Manuaba dan juga menggunakan pakaian yang sopan sería menggunakan selendang.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="section-title text-start col-12">
+                    <h4>Etika Berbusana Kepura</h4>
+                </div>
+                <div class="col-4" data-aos="fade-right">
+                    <h6>Pria:</h6>
+                    <ul>
+                        <li>Baju</li>
+                        <li>Kampuh</li>
+                        <li>Kain Panjang atau Kemben</li>
+                        <li>Sabuk atau Sesenteng</li>
+                        <li>Alas kaki (fakultatif/boleh iya,boleh tidak)</li>
+                    </ul>
+                </div>
+                <div class="col-4" data-aos="fade-up">
+                    <img src="assets/img/busana.jpg" alt="Busana">
+                </div>
+                <div class="col-4" data-aos="fade-left">
+                    <h6>Wanita:</h6>
+                    <ul>
+                        <li>Baju atau kebaya</li>
+                        <li>Kain panjang</li>
+                        <li>Sesenteng</li>
+                        <li>Sabuk</li>
+                        <li>Alas kaki (fakultatif/ boleh iya,boleh tidak)</li>
+                    </ul>
+                </div>
+                <div class="mt-4">
+                    <p>Kesopanan dalam berpakaian ke Pura diatur pula dalam Tata-Tertib masuk ke Pura di mana dinyatakan bahwa pakaian ke Pura adalah yang sopan, rapi, bersih, dan tidak menonjolkan bagian-bagian tubuh yang dapat merangsang, serta dandanan yang sederhana dalam artian tidak menggunakan hiasan berlebihan.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="default-shape">
+            <div class="shape-1">
+                <img src="assets/img/shape/1.png" alt="image">
+            </div>
+
+            <div class="shape-2 rotateme">
+                <img src="assets/img/shape/2.png" alt="image">
+            </div>
+
+            <div class="shape-3">
+                <img src="assets/img/shape/3.svg" alt="image">
+            </div>
+
+            <div class="shape-4">
+                <img src="assets/img/shape/4.svg" alt="image">
+            </div>
+
+            <div class="shape-5">
+                <img src="assets/img/shape/5.png" alt="image">
+            </div>
+        </div>
+    </section>
+    <!-- End Aturan Pengunjung -->
+
     <!-- Start Sejarah -->
     <section id="sejarah" class="about-area ptb-100">
         <div class="container">
