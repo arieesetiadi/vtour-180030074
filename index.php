@@ -142,28 +142,40 @@ $galleries = getGalleries();
                 <div class="section-title text-start col-12">
                     <h4>Etika Berbusana Kepura</h4>
                 </div>
-                <div class="col-4" data-aos="fade-right">
-                    <h6>Pria:</h6>
-                    <ul>
-                        <li>Baju</li>
-                        <li>Kampuh</li>
-                        <li>Kain Panjang atau Kemben</li>
-                        <li>Sabuk atau Sesenteng</li>
-                        <li>Alas kaki (fakultatif/boleh iya,boleh tidak)</li>
-                    </ul>
+
+                <!-- Wanita -->
+                <div class="col-4 d-flex justify-content-center" data-aos="fade-left">
+                    <div>
+                        <h6>Wanita:</h6>
+                        <ul>
+                            <li>Baju atau kebaya</li>
+                            <li>Kain panjang</li>
+                            <li>Sesenteng</li>
+                            <li>Sabuk</li>
+                            <li>Alas kaki (fakultatif/ boleh iya,boleh tidak)</li>
+                        </ul>
+                    </div>
                 </div>
+
+                <!-- Gambar Busana -->
                 <div class="col-4" data-aos="fade-up">
-                    <img src="assets/img/busana.jpg" alt="Busana">
+                    <center>
+                        <img width="70%" src="assets/img/busana-2.jpg" alt="Busana">
+                    </center>
                 </div>
-                <div class="col-4" data-aos="fade-left">
-                    <h6>Wanita:</h6>
-                    <ul>
-                        <li>Baju atau kebaya</li>
-                        <li>Kain panjang</li>
-                        <li>Sesenteng</li>
-                        <li>Sabuk</li>
-                        <li>Alas kaki (fakultatif/ boleh iya,boleh tidak)</li>
-                    </ul>
+
+                <!-- Pria -->
+                <div class="col-4 d-flex justify-content-center" data-aos="fade-right">
+                    <div>
+                        <h6>Pria:</h6>
+                        <ul>
+                            <li>Baju</li>
+                            <li>Kampuh</li>
+                            <li>Kain Panjang atau Kemben</li>
+                            <li>Sabuk atau Sesenteng</li>
+                            <li>Alas kaki (fakultatif/boleh iya,boleh tidak)</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="mt-4">
                     <p>Kesopanan dalam berpakaian ke Pura diatur pula dalam Tata-Tertib masuk ke Pura di mana dinyatakan bahwa pakaian ke Pura adalah yang sopan, rapi, bersih, dan tidak menonjolkan bagian-bagian tubuh yang dapat merangsang, serta dandanan yang sederhana dalam artian tidak menggunakan hiasan berlebihan.</p>
